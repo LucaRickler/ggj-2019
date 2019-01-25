@@ -17,8 +17,8 @@ public static class InputManager {
     return Input.GetKey("d");
   }
 
-  public static bool Grab() {
-    return false;
+  public static bool DragDrop() {
+    return Input.GetKeyDown(KeyCode.Return);
   }
 
 }

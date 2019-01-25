@@ -152,10 +152,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1100427262997892, guid: 5a91ccc62853645cbba7bb99870faf5e, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a91ccc62853645cbba7bb99870faf5e, type: 2}
   m_IsPrefabParent: 0
@@ -235,11 +231,6 @@ Transform:
 --- !u!1 &1107990469 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1100427262997892, guid: 5a91ccc62853645cbba7bb99870faf5e,
-    type: 2}
-  m_PrefabInternal: {fileID: 181103871}
---- !u!4 &1107990473 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4676741738989824, guid: 5a91ccc62853645cbba7bb99870faf5e,
     type: 2}
   m_PrefabInternal: {fileID: 181103871}
 --- !u!1 &1188883395
@@ -424,7 +415,7 @@ Rigidbody:
   m_GameObject: {fileID: 1827705148}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 10000
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -508,48 +499,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1992419194
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1992419195}
-  - component: {fileID: 1992419196}
-  m_Layer: 0
-  m_Name: DragDetector
-  m_TagString: drag-detector
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1992419195
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1992419194}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1107990473}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1992419196
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1992419194}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 1
-  m_Height: 3
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2134470261
 GameObject:
   m_ObjectHideFlags: 0
