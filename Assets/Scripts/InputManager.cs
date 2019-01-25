@@ -2,22 +2,23 @@ using UnityEngine;
 
 public static class InputManager {
   public static bool Up() {
-    return false;
+    return Input.GetKey("w");
   }
   
   public static bool Down() {
-    return false;
+    return Input.GetKey("s");
   }
 
   public static bool Left() {
-    return false;
+    return Input.GetKey("a");
   }
 
   public static bool Right() {
-    return false;
+    return Input.GetKey("d");
   }
 
   public static bool Grab() {
     return false;
   }
+
 }
