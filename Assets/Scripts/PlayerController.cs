@@ -1,4 +1,7 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
+
 
 public class PlayerController : MonoBehaviour {
 
@@ -13,7 +16,7 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-        [SerializeField]
+    [SerializeField]
     private bool _isAlive;
     public bool IsAlive {
         get { return _isAlive; }
@@ -26,6 +29,15 @@ public class PlayerController : MonoBehaviour {
         else
             return SpeedSpirit;
         }
+    }
+
+    private Draggable dragged;
+    public Draggable Draggable;
+
+    public Transform DragHandle;
+    public Transform DropPoint;
+
+    void Awake() {
     }
 
     void Update() {
@@ -43,6 +55,24 @@ public class PlayerController : MonoBehaviour {
         if (result != Vector3.zero) {
             transform.position += result * Speed * Time.deltaTime;
             transform.forward += result * SpeedRotation * Time.deltaTime;
+        }
+
+        if (InputManager.DragDrop()) DragDrop();
+    }
+
+    void DragDrop() {
+        if(Draggable != null) {
+            dragged = Draggable;
+            Draggable = null;
+            dragged.ToggleDrag(true);
+            dragged.transform.parent = DragHandle;
+            dragged.transform.position = DragHandle.position;
+        } else if(dragged != null) {
+            Draggable = dragged;
+            dragged = null;
+            Draggable.transform.parent = null;
+            Draggable.transform.position = DropPoint.position;
+            Draggable.ToggleDrag(false);
         }
     }
 }
