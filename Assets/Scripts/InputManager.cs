@@ -18,7 +18,7 @@ public static class InputManager {
   }
 
   public static bool DragDrop() {
-    return Input.GetKeyDown(KeyCode.Return);
+    return Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space);
   }
 
 }
