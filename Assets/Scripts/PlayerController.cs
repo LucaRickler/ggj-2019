@@ -58,6 +58,11 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (InputManager.DragDrop()) DragDrop();
+
+        if (dragged != null) {
+            dragged.transform.position = DragHandle.position;
+            //TODO: rotation
+        }
     }
 
     void DragDrop() {
