@@ -17,8 +17,6 @@ public class PhotoFly : MonoBehaviour {
 
     public float maxVar = 0.2f;
     public float var = 0.1f;
-    // Doing stuff with cane
-
 
     // Use this for initialization
     void Start () {
@@ -37,11 +35,8 @@ public class PhotoFly : MonoBehaviour {
         if (_currentObj != null){
             _isOnField = false;
             _currentObj = null;
-
         }
     }
-
- 
 
     bool flagMove = false;
 
@@ -50,38 +45,39 @@ public class PhotoFly : MonoBehaviour {
         if (IsOnField) {            
             transform.position += CurrentObj.Direction* CurrentObj.Step * Time.deltaTime;
 
-            if (transform.position.y <= 0.3f) flagMove = true;
+            if (transform.position.y <= 0.2f) flagMove = true;
             else if(transform.position.y >= maxVar) flagMove = false;
 
             Vector3 pos = transform.position;
             if (flagMove) pos.y += var*Time.deltaTime;
             else pos.y -= var*Time.deltaTime;
             transform.position = pos;
-        }
-        
+        }    
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "current-obstacle" && CurrentObj != null ) 
+        {
+            ResetField();
+            other.GetComponent<Collider>().gameObject.GetComponent<WindSwitcher>().Switch();
+        }
+    }
     void OnTriggerStay(Collider other)
     {
-        Debug.Log(LayerMask.LayerToName(other.GetComponent<Collider>().gameObject.layer));
-        if (other.tag == "current" && CurrentObj == null &&
+        if (other.tag == "current" && 
             GameManager.Instance.Player.GetComponent<PlayerController>().Draggable == null){
             SetField(other.GetComponent<Collider>().gameObject.GetComponent<Current>());
             GetComponent<Rigidbody>().drag = 1000;
         }
-        else if(other.tag == "current-obstacle" && CurrentObj != null){
-            CurrentObj.SwapDirection();
-            ResetField();
-        }
     }
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "current"){
+        if (other.tag == "current" && CurrentObj != null){
             GetComponent<Rigidbody>().drag = 1;
-            GetComponent<Rigidbody>().AddForce(CurrentObj.Direction*10);
+            GetComponent<Rigidbody>().AddForce(CurrentObj.Direction*30, ForceMode.Impulse);
             
-        ResetField();
-
+            ResetField();
         }
     }
 }

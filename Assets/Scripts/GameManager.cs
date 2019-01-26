@@ -5,6 +5,11 @@ public class GameManager : MonoBehaviour {
     GameObject playerSolid;
     [SerializeField]
     GameObject playerPhantom;
+
+    [SerializeField]
+    Current[] listCurrents;
+
+
     public GameObject Player {
         get {
             if (PlayerIsPhantom)
@@ -21,6 +26,17 @@ public class GameManager : MonoBehaviour {
             return is_phantom;
         }
     }
+
+    [SerializeField]
+    public Current[] ListCurrents 
+    {
+        get
+        {
+            return listCurrents;
+        }
+    }
+
+
 
     //----------------------------------------------------------------//
     private static GameManager instance;
