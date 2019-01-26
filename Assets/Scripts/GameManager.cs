@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    [SerializeField]
     public Current[] ListCurrents 
     {
         get
