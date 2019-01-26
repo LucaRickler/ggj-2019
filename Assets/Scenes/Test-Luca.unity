@@ -550,6 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragged: 0
+  Grabbable: 1
 --- !u!114 &1827705155
 MonoBehaviour:
   m_ObjectHideFlags: 0
