@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
         get { return _angle; }
     }
 
-    private Draggable dragged;
+    public Draggable dragged;
     public Draggable Draggable;
 
     public Transform DragHandle;
@@ -71,21 +71,33 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (InputManager.DragDrop()) DragDrop();
+
+        if (dragged != null) {
+            dragged.transform.position = DragHandle.position;
+            //TODO: rotation
+        }
     }
 
     void DragDrop() {
         if(Draggable != null && Vector3.Angle(transform.forward, Draggable.transform.position - transform.position) < Angle) {
-            dragged = Draggable;
-            Draggable = null;
-            dragged.ToggleDrag(true);
-            dragged.transform.parent = DragHandle;
-            dragged.transform.position = DragHandle.position;
+            GameManager.Instance.SwitchPlayerState(Draggable);
         } else if(dragged != null) {
-            Draggable = dragged;
-            dragged = null;
-            Draggable.transform.parent = null;
-            Draggable.transform.position = DropPoint.position;
-            Draggable.ToggleDrag(false);
+            GameManager.Instance.SwitchPlayerState(dragged);
         }
+    }
+
+    public void SetDragged(Draggable obj) {
+        dragged = obj;
+        dragged.ToggleDrag(true);
+        dragged.transform.parent = DragHandle;
+        dragged.transform.position = DragHandle.position;
+    }
+
+    public void SetDraggable(Draggable obj) {
+        Draggable = obj;
+        Draggable.transform.parent = null;
+        Draggable.transform.position = DropPoint.position;
+        Draggable.ToggleDrag(false);
+
     }
 }
