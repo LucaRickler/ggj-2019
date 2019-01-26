@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     Current[] listCurrents;
 
+    [SerializeField]
+    private Camera MainCamera;
+    private Vector3 cameraOffset;
 
     public GameObject Player {
         get {
@@ -64,6 +67,7 @@ public class GameManager : MonoBehaviour {
             Destroy (gameObject);
         }
         instance = this;
+        cameraOffset = MainCamera.transform.position - Player.transform.position;
     }
 
     void Update() {
@@ -74,6 +78,8 @@ public class GameManager : MonoBehaviour {
             playerPhantom.transform.position = playerSolid.transform.position;
             playerPhantom.transform.rotation = playerSolid.transform.rotation;
         }
+
+        MainCamera.transform.position = Player.transform.position + cameraOffset;
     }
 
     public void SwitchPlayerState(Draggable obj) {
