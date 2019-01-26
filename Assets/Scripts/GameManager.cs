@@ -1,11 +1,24 @@
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
-  [SerializeField]
-    GameObject player;
+    [SerializeField]
+    GameObject playerSolid;
+    [SerializeField]
+    GameObject playerPhantom;
     public GameObject Player {
         get {
-            return player;
+            if (PlayerIsPhantom)
+                return playerPhantom;
+            else
+                return playerSolid;
+        }
+    }
+
+    [SerializeField]
+    private bool is_phantom;
+    public bool PlayerIsPhantom {
+        get {
+            return is_phantom;
         }
     }
 
@@ -30,5 +43,30 @@ public class GameManager : MonoBehaviour {
             Destroy (gameObject);
         }
         instance = this;
+    }
+
+    void Update() {
+        if(PlayerIsPhantom) {
+            playerSolid.transform.position = playerPhantom.transform.position;
+            playerSolid.transform.rotation = playerPhantom.transform.rotation;
+        } else {
+            playerPhantom.transform.position = playerSolid.transform.position;
+            playerPhantom.transform.rotation = playerSolid.transform.rotation;
+        }
+    }
+
+    public void SwitchPlayerState(Draggable obj) {
+        is_phantom = !is_phantom;
+        playerPhantom.GetComponent<PlayerController>().Draggable = null;
+        playerSolid.GetComponent<PlayerController>().dragged = null;
+        playerPhantom.SetActive(PlayerIsPhantom);
+        playerSolid.SetActive(!PlayerIsPhantom);
+
+        if (PlayerIsPhantom) {
+            playerPhantom.GetComponent<PlayerController>().SetDraggable(obj);
+        } else {
+            playerSolid.GetComponent<PlayerController>().SetDragged(obj);
+        }
+        //TODO: Add environment & possible flash
     }
 }
