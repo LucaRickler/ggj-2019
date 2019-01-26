@@ -9,6 +9,8 @@ public class Draggable : MonoBehaviour {
         }
     }
 
+    public bool Grabbable = true;
+
     public void ToggleDrag(bool state) {
         dragged = state;
     }
