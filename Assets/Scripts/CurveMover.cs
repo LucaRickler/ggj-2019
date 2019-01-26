@@ -47,6 +47,7 @@ public class CurveMover : MonoBehaviour {
 
     public void Empty() {
         load.transform.parent = null;
+        load.GetComponent<Loadable>().Mover = null;
         load = null;
     }
     
