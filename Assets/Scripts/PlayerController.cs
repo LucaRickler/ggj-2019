@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void DragDrop() {
-        if(Draggable != null && Vector3.Angle(transform.forward, Draggable.transform.position - transform.position) < Angle) {
+        if(Draggable != null && Vector3.Angle(transform.forward, Draggable.transform.position - transform.position) < Angle && Draggable.Grabbable) {
             GameManager.Instance.SwitchPlayerState(Draggable);
         } else if(dragged != null) {
             GameManager.Instance.SwitchPlayerState(dragged);
