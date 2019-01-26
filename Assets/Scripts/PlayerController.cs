@@ -30,6 +30,12 @@ public class PlayerController : MonoBehaviour {
         get { return _isAlive; }
     }
 
+    [SerializeField]
+    private float _angle;
+    public float Angle {
+        get { return _angle; }
+    }
+
     private Draggable dragged;
     public Draggable Draggable;
 
@@ -60,6 +66,7 @@ public class PlayerController : MonoBehaviour {
                 transform.forward += 4.0f*result * SpeedRotation * Time.deltaTime;
             else
                 transform.forward += result * SpeedRotation * Time.deltaTime;
+            //Camera.main.transform.LookAt(transform.position);
             LastDirection = result;
         }
 
@@ -67,7 +74,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void DragDrop() {
-        if(Draggable != null) {
+        if(Draggable != null && Vector3.Angle(transform.forward, Draggable.transform.position - transform.position) < Angle) {
             dragged = Draggable;
             Draggable = null;
             dragged.ToggleDrag(true);
