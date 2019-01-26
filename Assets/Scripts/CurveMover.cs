@@ -22,6 +22,11 @@ public class CurveMover : MonoBehaviour {
         animator = GetComponent<Animator>();
     }
 
+    void Update() {
+        if (load != null)
+            load.transform.position = Cursor.position;
+    }
+
     public virtual void Move() {
         if (IsCharged) {
             StartCoroutine(MoveCicle());
@@ -37,6 +42,7 @@ public class CurveMover : MonoBehaviour {
     public void Charge(GameObject content) {
         load = content;
         load.transform.parent = Cursor;
+        load.transform.position = Cursor.position;
     }
 
     public void Empty() {
