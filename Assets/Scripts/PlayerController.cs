@@ -11,10 +11,10 @@ public class PlayerController : MonoBehaviour {
     private float SpeedAlive = 2;
     public float Speed{
         get{
-            if (IsAlive)
-                return SpeedAlive;
-            else
+            if (GameManager.Instance.PlayerIsPhantom)
                 return SpeedSpirit;
+            else
+                return SpeedAlive;
         }
     }
 
@@ -23,13 +23,7 @@ public class PlayerController : MonoBehaviour {
     public float SpeedRotation {
         get { return _speedRotation; }
     }
-
-    [SerializeField]
-    private bool _isAlive;
-    public bool IsAlive {
-        get { return _isAlive; }
-    }
-
+    
     [SerializeField]
     private float _angle;
     public float Angle {
@@ -80,7 +74,8 @@ public class PlayerController : MonoBehaviour {
 
     void DragDrop() {
         if(Draggable != null && Vector3.Angle(transform.forward, Draggable.transform.position - transform.position) < Angle) {
-            GameManager.Instance.SwitchPlayerState(Draggable);
+            if(dragged == null)
+                GameManager.Instance.SwitchPlayerState(Draggable);
         } else if(dragged != null) {
             GameManager.Instance.SwitchPlayerState(dragged);
         }
