@@ -7,6 +7,12 @@ public class GameManager : MonoBehaviour {
     GameObject playerPhantom;
 
     [SerializeField]
+    GameObject solidEnvironment;
+
+    [SerializeField]
+    GameObject phantomEnvironment;
+
+    [SerializeField]
     Current[] listCurrents;
 
 
@@ -75,7 +81,9 @@ public class GameManager : MonoBehaviour {
         playerPhantom.GetComponent<PlayerController>().Draggable = null;
         playerSolid.GetComponent<PlayerController>().dragged = null;
         playerPhantom.SetActive(PlayerIsPhantom);
+        phantomEnvironment.SetActive(PlayerIsPhantom);
         playerSolid.SetActive(!PlayerIsPhantom);
+        solidEnvironment.SetActive(!PlayerIsPhantom);
 
         if (PlayerIsPhantom) {
             playerPhantom.GetComponent<PlayerController>().SetDraggable(obj);
