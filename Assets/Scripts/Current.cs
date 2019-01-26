@@ -22,7 +22,7 @@ public class Current : MonoBehaviour {
     }
 
     public void SwapDirection() {
-        _direction = -_direction;
+        _direction = new Vector3(-_direction.x,-_direction.y,-_direction.z);
     }
 }
 
