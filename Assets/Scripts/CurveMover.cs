@@ -16,7 +16,7 @@ public class CurveMover : MonoBehaviour {
 
     public Transform Cursor;
 
-    private Animator animator;
+    protected Animator animator;
 
     void Awake() {
         animator = GetComponent<Animator>();

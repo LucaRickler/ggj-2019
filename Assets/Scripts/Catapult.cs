@@ -13,7 +13,8 @@ public class Catapult : CurveMover {
     public Catapult companion;
 
     public override void Move() {
-        if (IsFireable) {
+        if (IsFireable && !animator.GetBool("Moving")) {
+            companion.Move();
             StartCoroutine(MoveCicle());
         }
     }
