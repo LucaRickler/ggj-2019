@@ -26,7 +26,10 @@ public class Teleportable : MonoBehaviour {
         alreadyTeleported = true;
         drag.Grabbable = false;
         yield return new WaitForSeconds(1.0f);
-        transform.position = porter.Companion.Exit.position;
+        if (porter.IsHole)
+            transform.position = porter.Exit.position;
+        else
+            transform.position = porter.Companion.Exit.position;
         drag.Grabbable = true;
         //TODO: sound effect
 
