@@ -198,7 +198,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 224896062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4313216, y: 1.0500088, z: 0.24521694}
+  m_LocalPosition: {x: 0.92, y: 1.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -333,7 +333,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1628377101936248, guid: 43b7ad63bb21446a59b62f0568d2b89d, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114637709728523186, guid: 43b7ad63bb21446a59b62f0568d2b89d,
         type: 2}
@@ -399,7 +399,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1450464739236176, guid: a55ee08f2b70944838ff9df9dd91c276, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114349102045622746, guid: a55ee08f2b70944838ff9df9dd91c276,
         type: 2}
@@ -440,7 +440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &919364757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,6 +453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragged: 0
+  Grabbable: 1
 --- !u!135 &919364758
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -811,7 +812,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &1953973110
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -854,6 +855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragged: 0
+  Grabbable: 1
 --- !u!65 &1953973113
 BoxCollider:
   m_ObjectHideFlags: 0
