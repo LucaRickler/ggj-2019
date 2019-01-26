@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - drag-detector
+  - tube
+  - current
+  - current-obstacle
   layers:
   - Default
   - TransparentFX
