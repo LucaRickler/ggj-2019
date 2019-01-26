@@ -9,26 +9,25 @@ public class PlayerController : MonoBehaviour {
     private float SpeedSpirit = 1;
     [SerializeField]
     private float SpeedAlive = 2;
+    public float Speed{
+        get{
+            if (IsAlive)
+                return SpeedAlive;
+            else
+                return SpeedSpirit;
+        }
+    }
+
     [SerializeField]
     private float _speedRotation = 5f;
     public float SpeedRotation {
         get { return _speedRotation; }
     }
 
-
     [SerializeField]
     private bool _isAlive;
     public bool IsAlive {
         get { return _isAlive; }
-    }
-
-    public float Speed {
-      get {
-        if (IsAlive)
-            return SpeedAlive;
-        else
-            return SpeedSpirit;
-        }
     }
 
     private Draggable dragged;
@@ -37,11 +36,12 @@ public class PlayerController : MonoBehaviour {
     public Transform DragHandle;
     public Transform DropPoint;
 
+    Vector3 LastDirection = new Vector3(0,0,1);
+
     void Awake() {
     }
 
     void Update() {
-
         //Aggiornamento movimenti
         Vector3 x = Vector3.zero;
         Vector3 z = Vector3.zero;
@@ -54,7 +54,13 @@ public class PlayerController : MonoBehaviour {
         Vector3 result = (x + z).normalized;
         if (result != Vector3.zero) {
             transform.position += result * Speed * Time.deltaTime;
-            transform.forward += result * SpeedRotation * Time.deltaTime;
+            
+            // Correzione caso limite asse X e Z
+            if (Mathf.Approximately(Mathf.Abs(Vector3.Dot(result,LastDirection)),1))
+                transform.forward += 4.0f*result * SpeedRotation * Time.deltaTime;
+            else
+                transform.forward += result * SpeedRotation * Time.deltaTime;
+            LastDirection = result;
         }
 
         if (InputManager.DragDrop()) DragDrop();
