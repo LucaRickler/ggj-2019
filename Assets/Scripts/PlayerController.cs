@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour {
     public Draggable dragged;
     public Draggable Draggable;
 
+    public Lever UsableLever;
+
     public Transform DragHandle;
     public Transform DropPoint;
 
@@ -84,6 +86,9 @@ public class PlayerController : MonoBehaviour {
         } else if(dragged != null) {
             GameManager.Instance.SwitchPlayerState(dragged);
         }
+
+        if (UsableLever != null && dragged == null)
+            UsableLever.Use();
     }
 
     public void SetDragged(Draggable obj) {
