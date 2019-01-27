@@ -1,7 +1,8 @@
 ﻿Shader "Custom/TombstoneShader" {
 	Properties{
 		_Color("Color", Color) = (1,1,1,1)
-		
+		_EmissionColor("EmissionColor", Color) = (1,1,1,1)
+
 		_MainTex("Albedo (RGB)", 2D) = "white" {}
 
 		_MetallicMap("MetallicMap", 2D) = "white" {}
@@ -47,7 +48,7 @@
 		half _Glossiness;
 		half _Metallic;
 		half _Emission;
-		fixed4 _Color;
+		fixed4 _Color, _EmissionColor;
 
 		// Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
 		// See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -67,9 +68,8 @@
 			o.Metallic = m.r;
 			float result = (sin(_Time.z*0.7) + 1) *0.5f;
 			//fixed4 e = tex2D(_EmissionMap, IN.uv_EmissionMap) * _Emission;
-			fixed4 e = tex2D(_EmissionMap, IN.uv_EmissionMap)* (_Emission * result + (1 - result)*_Color);
-			o.Emission = e.r;
-
+			fixed4 e = tex2D(_EmissionMap, IN.uv_EmissionMap)* (_EmissionColor * result);
+			o.Emission = e.rgb;
 
 			o.Smoothness = m.a *_Glossiness;
 			o.Alpha = _Transparent;
