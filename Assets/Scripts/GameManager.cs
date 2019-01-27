@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private Camera MainCamera;
     private Vector3 cameraOffset;
+    [SerializeField]
+    GameObject[] catapults;
 
     public GameObject Player {
         get {
@@ -44,6 +46,13 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public GameObject[] Catapults
+    {
+        get
+        {
+            return Catapults;
+        }
+    }
 
 
     //----------------------------------------------------------------//
