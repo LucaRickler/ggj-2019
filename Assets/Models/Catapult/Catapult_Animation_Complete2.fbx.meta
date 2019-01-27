@@ -1,21 +1,25 @@
 fileFormatVersion: 2
-guid: dbb2971aa221949d4aa5667070265cef
+guid: 2e6284a576e4f4994a665a44c690df83
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: Arm
-    100002: Armature
-    100004: body
-    100006: Catapult
-    100008: //RootNode
+    100002: Arm.001
+    100004: Armature
+    100006: body
+    100008: Catapult
+    100010: //RootNode
     400000: Arm
-    400002: Armature
-    400004: body
-    400006: Catapult
-    400008: //RootNode
+    400002: Arm.001
+    400004: Armature
+    400006: body
+    400008: Catapult
+    400010: //RootNode
     2100000: Material.001
     4300000: Catapult
-    7400000: Scene
+    7400000: Armature|ArmatureAction
+    7400002: Armature|CatapultAction
+    7400004: Catapult|CatapultAction
     9500000: //RootNode
     13700000: Catapult
   externalObjects: {}
