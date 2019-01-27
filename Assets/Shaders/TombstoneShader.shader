@@ -68,7 +68,7 @@
 			o.Metallic = m.r;
 			float result = (sin(_Time.z*0.7) + 1) *0.5f;
 			//fixed4 e = tex2D(_EmissionMap, IN.uv_EmissionMap) * _Emission;
-			fixed4 e = tex2D(_EmissionMap, IN.uv_EmissionMap)* (_EmissionColor * result);
+			fixed4 e = tex2D(_EmissionMap, IN.uv_EmissionMap)* (_EmissionColor * result );
 			o.Emission = e.rgb;
 
 			o.Smoothness = m.a *_Glossiness;
