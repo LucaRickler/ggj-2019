@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     Current[] listCurrents;
 
+    [SerializeField]
+    GameObject[] catapults;
 
     public GameObject Player {
         get {
@@ -41,6 +43,13 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public GameObject[] Catapults
+    {
+        get
+        {
+            return Catapults;
+        }
+    }
 
 
     //----------------------------------------------------------------//

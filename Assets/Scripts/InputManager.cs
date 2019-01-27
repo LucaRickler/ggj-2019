@@ -21,4 +21,8 @@ public static class InputManager {
     return Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0);
   }
 
+  public static bool Exit() {
+        return Input.GetKeyDown(KeyCode.Escape);  
+  }
+
 }
