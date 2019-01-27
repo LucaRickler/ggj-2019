@@ -1,16 +1,46 @@
 fileFormatVersion: 2
-guid: d011dd585d8a04ee499a3700de3a36d9
+guid: 1d1a5f24f62684344aa05d1172c35724
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: polySurface196
-    400000: //RootNode
-    400002: polySurface196
-    2100000: lambert1
-    2300000: polySurface196
-    3300000: polySurface196
-    4300000: polySurface196
+    100000: DoorWood
+    100002: //RootNode
+    100004: Frame
+    100006: pareti
+    100008: PavRotto
+    100010: Rosone
+    100012: Vetrata
+    400000: DoorWood
+    400002: //RootNode
+    400004: Frame
+    400006: pareti
+    400008: PavRotto
+    400010: Rosone
+    400012: Vetrata
+    2100000: blinn7
+    2100002: blinn8
+    2100004: blinn3
+    2100006: blinn5
+    2100008: blinn4
+    2100010: blinn6
+    2300000: DoorWood
+    2300002: Frame
+    2300004: pareti
+    2300006: PavRotto
+    2300008: Rosone
+    2300010: Vetrata
+    3300000: DoorWood
+    3300002: Frame
+    3300004: pareti
+    3300006: PavRotto
+    3300008: Rosone
+    3300010: Vetrata
+    4300000: Frame
+    4300002: DoorWood
+    4300004: Rosone
+    4300006: pareti
+    4300008: Vetrata
+    4300010: PavRotto
   externalObjects: {}
   materials:
     importMaterials: 1
