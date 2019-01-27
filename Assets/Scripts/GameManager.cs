@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
@@ -20,6 +21,9 @@ public class GameManager : MonoBehaviour {
     private Vector3 cameraOffset;
     [SerializeField]
     GameObject[] catapults;
+
+    [SerializeField]
+    CanvasGroup fadeImage;
 
     public GameObject Player {
         get {
@@ -45,7 +49,7 @@ public class GameManager : MonoBehaviour {
             return listCurrents;
         }
     }
-
+    
     public GameObject[] Catapults
     {
         get
@@ -54,6 +58,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    private bool is_change = false;
 
     //----------------------------------------------------------------//
     private static GameManager instance;
@@ -106,5 +111,28 @@ public class GameManager : MonoBehaviour {
             playerSolid.GetComponent<PlayerController>().SetDragged(obj);
         }
         //TODO: Add environment & possible flash
+    }
+
+    public void ChangeScene() {
+        is_change = true;
+        StartCoroutine(FadeIn());
+        StartCoroutine(FadeOut());
+    }
+
+    private IEnumerator FadeIn() {
+        while (!Mathf.Approximately(fadeImage.alpha, 0.0f))
+        {
+            fadeImage.alpha -= 2 * Time.deltaTime;
+            yield return null;
+        }
+    }
+    private IEnumerator FadeOut()
+    {
+        while (!Mathf.Approximately(fadeImage.alpha, 1.0f))
+        {
+            fadeImage.alpha += 2 * Time.deltaTime;
+            yield return null;
+        }
+        is_change = false;
     }
 }

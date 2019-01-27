@@ -14,7 +14,7 @@ public class RoomTrigger : MonoBehaviour {
         get { return catapultRoom; }
     }
 
-    public float FadeSpeed = 0.1f;
+    public float FadeSpeed = 0.6f;
 
 
     MeshRenderer[] hallMeshes, catapultMeshes;
@@ -53,40 +53,31 @@ public class RoomTrigger : MonoBehaviour {
     {
         foreach (MeshRenderer m in room)
         {
-            foreach (Material mat in m.materials)
-            {
-                Debug.Log(m.material.color);
-                while (!Mathf.Approximately(mat.GetFloat("_Transparent"), 0.0f))
+            Debug.Log(m.material.color);
+                while (!Mathf.Approximately(m.material.GetFloat("_Transparent"), 0.0f))
                 {
                     //Color c = m.material.color;
-                    //float tmp = mat.GetFloat("_Transparent") - FadeSpeed * Time.deltaTime;
-                    //if (tmp < 0) tmp = 0.0f;
-                    mat.SetFloat("_Transparent", 0.0f);//-= FadeSpeed * Time.deltaTime;
+                    float tmp = m.material.GetFloat("_Transparent") - FadeSpeed * Time.deltaTime;
+                    if (tmp < 0) tmp = 0.0f;
+                    m.material.SetFloat("_Transparent", tmp);//-= FadeSpeed * Time.deltaTime;
                    // m.material.color = c;
                     yield return null;
                 }
-            }
         }
     }
     private IEnumerator ShowRoom(MeshRenderer[] room)
     {
         foreach (MeshRenderer m in room)
         {
-            foreach (Material mat in m.materials)
+            while (!Mathf.Approximately(m.material.GetFloat("_Transparent"), 1.0f))
             {
-                while (!Mathf.Approximately(mat.GetFloat("_Transparent"), 1.0f))
-                {
-                    //Color c = mat.color;
-                    //float tmp = mat.GetFloat("_Transparent") + FadeSpeed * Time.deltaTime;
-                    mat.SetFloat("_Transparent", 1.0f);//+= FadeSpeed * Time.deltaTime;
-                    //mat.color = c;
-                    yield return null;
-                }
+                //Color c = mat.color;
+                float tmp = m.material.GetFloat("_Transparent") + FadeSpeed * Time.deltaTime;
+                if (tmp > 1) tmp = 1.0f;
+                m.material.SetFloat("_Transparent", tmp);//+= FadeSpeed * Time.deltaTime;
+                //mat.color = c;
+                yield return null;
             }
         }
     }
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }

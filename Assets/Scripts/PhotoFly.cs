@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Draggable))]
 public class PhotoFly : MonoBehaviour {
     [SerializeField]
     private bool _isOnField;
@@ -14,6 +15,7 @@ public class PhotoFly : MonoBehaviour {
         get { return _currentObj; }
 
     }
+    private Draggable drag;
 
     public float maxVar = 0.2f;
     public float var = 0.1f;
@@ -67,6 +69,7 @@ public class PhotoFly : MonoBehaviour {
     {
         if (other.tag == "current" && 
             GameManager.Instance.Player.GetComponent<PlayerController>().Draggable == null){
+            drag.Grabbable = false;            
             SetField(other.GetComponent<Collider>().gameObject.GetComponent<Current>());
             GetComponent<Rigidbody>().drag = 1000;
         }
@@ -78,6 +81,7 @@ public class PhotoFly : MonoBehaviour {
             GetComponent<Rigidbody>().AddForce(CurrentObj.Direction*30, ForceMode.Impulse);
             
             ResetField();
+            drag.Grabbable = true;
         }
     }
 }
