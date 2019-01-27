@@ -46,13 +46,21 @@ public class PlayerController : MonoBehaviour {
 
     Vector3 LastDirection = new Vector3(0,0,1);
 
+    Animator animator;
+    Rigidbody body;
+
     void Awake() {
+        animator = GetComponent<Animator>();
+        body = GetComponent<Rigidbody>();
     }
 
     void Update() {
         //Aggiornamento movimenti
         Vector3 x = Vector3.zero;
         Vector3 z = Vector3.zero;
+
+        animator.SetBool("Walk",(InputManager.Up() || InputManager.Down() || InputManager.Right() || InputManager.Left()&&!Unmovable));
+        animator.SetBool("Falling", body.velocity.y < -0.2f);
 
         if(!Unmovable){
             if (InputManager.Up()) z = new Vector3(0, 0, 1);
@@ -85,12 +93,16 @@ public class PlayerController : MonoBehaviour {
     void DragDrop() {
         if(Draggable != null && dragged == null && Vector3.Angle(transform.forward, Draggable.transform.position - transform.position) < Angle && Draggable.Grabbable) {
             GameManager.Instance.SwitchPlayerState(Draggable);
+            animator.SetTrigger("Grab");
         } else if(dragged != null) {
             GameManager.Instance.SwitchPlayerState(dragged);
+            animator.SetTrigger("Drop");
         }
 
-        if (UsableLever != null && dragged == null)
+        if (UsableLever != null && dragged == null) {
             UsableLever.Use();
+            animator.SetTrigger("Grab");
+        }
     }
 
     public void SetDragged(Draggable obj) {
