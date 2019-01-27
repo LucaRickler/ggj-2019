@@ -100,6 +100,15 @@ public class GameManager : MonoBehaviour {
     }
 
     public void SwitchPlayerState(Draggable obj) {
+        StartCoroutine(FadeCycle(obj));
+    }
+    private IEnumerator FadeCycle(Draggable obj) {
+        while (!Mathf.Approximately(fadeImage.alpha, 1.0f))
+        {
+            fadeImage.alpha += 2 * Time.deltaTime;
+            yield return null;
+        }
+
         is_phantom = !is_phantom;
         playerPhantom.GetComponent<PlayerController>().Draggable = null;
         playerSolid.GetComponent<PlayerController>().dragged = null;
@@ -113,27 +122,10 @@ public class GameManager : MonoBehaviour {
         } else {
             playerSolid.GetComponent<PlayerController>().SetDragged(obj);
         }
-        //TODO: Add environment & possible flash
-    }
 
-    public void ChangeScene() {
-        is_change = true;
-        StartCoroutine(FadeIn());
-        StartCoroutine(FadeOut());
-    }
-
-    private IEnumerator FadeIn() {
         while (!Mathf.Approximately(fadeImage.alpha, 0.0f))
         {
             fadeImage.alpha -= 2 * Time.deltaTime;
-            yield return null;
-        }
-    }
-    private IEnumerator FadeOut()
-    {
-        while (!Mathf.Approximately(fadeImage.alpha, 1.0f))
-        {
-            fadeImage.alpha += 2 * Time.deltaTime;
             yield return null;
         }
         is_change = false;

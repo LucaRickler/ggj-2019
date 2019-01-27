@@ -1,24 +1,14 @@
 fileFormatVersion: 2
-guid: c1582b0a1dba540be8c18689325a25ab
+guid: 0f86f71e69a53448191d156e6e4cae82
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: polySurface418
-    100004: polySurface419
-    100006: polySurface420
-    100008: transform1
-    100010: transform2
     400000: //RootNode
-    400002: polySurface418
-    400004: polySurface419
-    400006: polySurface420
-    400008: transform1
-    400010: transform2
-    2100000: DobleDoor
-    2300000: polySurface420
-    3300000: polySurface420
-    4300000: polySurface420
+    2100000: blinn8
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: DoorWood1
     7400000: Take 001
     9500000: //RootNode
   externalObjects: {}

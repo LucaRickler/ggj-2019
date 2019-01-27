@@ -1,14 +1,39 @@
 fileFormatVersion: 2
-guid: 2ba6f3554d62644d4a4c74143261d049
+guid: c329f470239964961975017cb6b7aa1c
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: lever_03
+    100002: //RootNode
+    100004: polySurface10
+    100006: polySurface11
+    100008: polySurface12
+    100010: polySurface12 1
+    100012: polySurface13
+    100014: transform1
+    100016: transform2
+    100018: transform3
+    100020: transform4
+    400000: lever_03
+    400002: //RootNode
+    400004: polySurface10
+    400006: polySurface11
+    400008: polySurface12
+    400010: polySurface12 1
+    400012: polySurface13
+    400014: transform1
+    400016: transform2
+    400018: transform3
+    400020: transform4
     2100000: lambert1
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: lever_03
+    2300000: polySurface12
+    2300002: polySurface13
+    3300000: polySurface12
+    3300002: polySurface13
+    4300000: polySurface13
+    4300002: polySurface12
+    7400000: Take 001
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -84,7 +109,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
