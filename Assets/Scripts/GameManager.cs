@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour {
     {
         get
         {
-            return Catapults;
+            return catapults;
         }
     }
 

@@ -41,6 +41,7 @@ public class CurveMover : MonoBehaviour {
 
     public void Charge(GameObject content) {
         load = content;
+        load.GetComponent<Rigidbody>().useGravity = false;
         load.transform.parent = Cursor;
         load.transform.position = Cursor.position;
     }
@@ -48,6 +49,7 @@ public class CurveMover : MonoBehaviour {
     public void Empty() {
         load.transform.parent = null;
         load.GetComponent<Loadable>().Mover = null;
+        load.GetComponent<Rigidbody>().useGravity = true;
         load = null;
     }
     
