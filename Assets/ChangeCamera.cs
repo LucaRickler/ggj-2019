@@ -13,10 +13,18 @@ public class ChangeCamera : MonoBehaviour {
 
     Quaternion rotBeforeChanges, rotAfterChanges;
 
+    private bool player_inside;
+
+    [SerializeField]    
+    
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player") {
-            Debug.Log("OnTriggerEnter");
+        if (other.tag == "Player" && !player_inside) {
+            player_inside = true;
+            GameManager.Instance.Player.GetComponent<PlayerController>().SetUnmovable(true);
+            GameManager.Instance.ToggleCameraFollow();
+            //Debug.Log("OnTriggerEnter");
             poseBeforeChanges= mainCamera.transform.position;
             rotBeforeChanges = mainCamera.transform.rotation;
             poseAfterChanges = emptyTarget.transform.position;
@@ -27,9 +35,11 @@ public class ChangeCamera : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
-        {
-            Debug.Log("OnTriggerExit");
+        if (other.tag == "Player" && player_inside)
+        {  
+            player_inside = false;
+           // Debug.Log("OnTriggerExit");
+            GameManager.Instance.Player.GetComponent<PlayerController>().SetUnmovable(true);
             StartCoroutine(ReverseCameraPosition());
         }
     }
@@ -43,10 +53,13 @@ public class ChangeCamera : MonoBehaviour {
             mainCamera.transform.rotation = Quaternion.Slerp(mainCamera.transform.rotation, rotAfterChanges, 0.2f);
             yield return null;
         }
+        GameManager.Instance.Player.GetComponent<PlayerController>().SetUnmovable(false);
     }
 
     private IEnumerator ReverseCameraPosition()
     {
+        yield return new WaitForSeconds(1);
+
         while (!Mathf.Approximately(Vector3.Distance(mainCamera.transform.position, poseBeforeChanges), 0.0f))
         {
             Debug.Log(Vector3.Distance(mainCamera.transform.position, poseAfterChanges));
@@ -55,5 +68,7 @@ public class ChangeCamera : MonoBehaviour {
             mainCamera.transform.rotation = Quaternion.Slerp(mainCamera.transform.rotation, rotBeforeChanges, 0.2f);
             yield return null;
         }
+        GameManager.Instance.Player.GetComponent<PlayerController>().SetUnmovable(false);
+        GameManager.Instance.ToggleCameraFollow();
     }
 }

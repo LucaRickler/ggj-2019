@@ -3,12 +3,11 @@ using System.Collections.Generic;
 
 public class Lever : MonoBehaviour {
 
-    public List<Catapult> catapults = new List<Catapult>();
-
     public void Use() {
-        foreach (Catapult c in catapults) {
-            if (c.IsFireable)
-                c.Move();
+        GetComponent<Animator>().SetTrigger("Pull");
+        foreach (GameObject c in GameManager.Instance.Catapults) {
+            if (c.GetComponent<Catapult>().IsFireable)
+                c.GetComponent<Catapult>().Move();
         }
     }
 
