@@ -1,14 +1,16 @@
 fileFormatVersion: 2
-guid: 54ffd39429f8e42948f4d2d0c81ad753
+guid: a78906ab4d95547ba912736e0ce19e55
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Material
+    2100000: blinn8
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cube.003
+    4300000: DoorWood1
+    7400000: Take 001
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -84,7 +86,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
