@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour {
 
     private bool is_change = false;
 
+    private bool follow_player = true;
+
     //----------------------------------------------------------------//
     private static GameManager instance;
 
@@ -93,7 +95,8 @@ public class GameManager : MonoBehaviour {
             playerPhantom.transform.rotation = playerSolid.transform.rotation;
         }
 
-        MainCamera.transform.position = Player.transform.position + cameraOffset;
+        if (follow_player)
+            MainCamera.transform.position = Player.transform.position + cameraOffset;
     }
 
     public void SwitchPlayerState(Draggable obj) {
@@ -134,5 +137,9 @@ public class GameManager : MonoBehaviour {
             yield return null;
         }
         is_change = false;
+    }
+
+    public void ToggleCameraFollow() {
+        follow_player = !follow_player;
     }
 }

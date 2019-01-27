@@ -1,21 +1,24 @@
 fileFormatVersion: 2
-guid: 51066db1e7e604c00ad33242c35f6c1d
+guid: c1582b0a1dba540be8c18689325a25ab
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: lever_01
-    100004: lever_02
+    100002: polySurface418
+    100004: polySurface419
+    100006: polySurface420
+    100008: transform1
+    100010: transform2
     400000: //RootNode
-    400002: lever_01
-    400004: lever_02
-    2100000: lambert1
-    2300000: lever_01
-    2300002: lever_02
-    3300000: lever_01
-    3300002: lever_02
-    4300000: lever_01
-    4300002: lever_02
+    400002: polySurface418
+    400004: polySurface419
+    400006: polySurface420
+    400008: transform1
+    400010: transform2
+    2100000: DobleDoor
+    2300000: polySurface420
+    3300000: polySurface420
+    4300000: polySurface420
     7400000: Take 001
     9500000: //RootNode
   externalObjects: {}

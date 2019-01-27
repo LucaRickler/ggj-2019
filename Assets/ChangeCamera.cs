@@ -16,6 +16,7 @@ public class ChangeCamera : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player") {
+            GameManager.Instance.ToggleCameraFollow();
             Debug.Log("OnTriggerEnter");
             poseBeforeChanges= mainCamera.transform.position;
             rotBeforeChanges = mainCamera.transform.rotation;
@@ -55,5 +56,6 @@ public class ChangeCamera : MonoBehaviour {
             mainCamera.transform.rotation = Quaternion.Slerp(mainCamera.transform.rotation, rotBeforeChanges, 0.2f);
             yield return null;
         }
+        GameManager.Instance.ToggleCameraFollow();
     }
 }
