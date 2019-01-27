@@ -29,13 +29,13 @@ public class GUI : MonoBehaviour {
            yield return null;
         }
         exitCredits = false;
-        Text txt = Credits.GetComponentInChildren<Text>();
+        RectTransform txt = Credits.GetComponentInChildren<RectTransform>();
 
-        while (txt.rectTransform.localPosition.y <= 650 && !exitCredits)
+        while (txt.localPosition.y <= 900 && !exitCredits)
         {
-            Vector3 tmp = txt.rectTransform.localPosition;
+            Vector3 tmp = txt.localPosition;
             tmp.y += FadeSpeed * 20 * Time.deltaTime;
-            txt.rectTransform.localPosition = tmp;
+            txt.localPosition = tmp;
             yield return null;
         }
 
@@ -47,9 +47,9 @@ public class GUI : MonoBehaviour {
 
         if (exitCredits) {
             FadeImage.alpha = 0;
-            Vector3 tmp = txt.rectTransform.localPosition;
-            tmp.y = -580;
-            txt.rectTransform.localPosition = tmp;
+            Vector3 tmp = txt.localPosition;
+            tmp.y = -680;
+            txt.localPosition = tmp;
         }
         Credits.SetActive(false);
         exitCredits = false;
