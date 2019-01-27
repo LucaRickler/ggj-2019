@@ -8,8 +8,9 @@ public class Finale : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.name == TargetName) {
+            //Camera.SetupCurrent(MainCamera.GetComponent<Camera>());
             External.SetActive(true);
-            MainCamera.SetTrigger("Ending");
+            //MainCamera.SetTrigger("Ending");
         }
     }
 }

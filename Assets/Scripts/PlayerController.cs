@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour {
         Vector3 z = Vector3.zero;
 
         animator.SetBool("Walk",(InputManager.Up() || InputManager.Down() || InputManager.Right() || InputManager.Left()&&!Unmovable));
-        animator.SetBool("Falling", body.velocity.y < -0.2f);
+        animator.SetBool("Falling", body.velocity.y < -0.5f);
 
         if(!Unmovable){
             if (InputManager.Up()) z = new Vector3(0, 0, 1);
